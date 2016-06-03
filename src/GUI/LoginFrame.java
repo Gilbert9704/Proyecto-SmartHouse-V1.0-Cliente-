@@ -4,21 +4,14 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-
 import javax.swing.*;
-
-import DAO.ArchivoUsr;
-
-import Datos.Usuario;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import Datos.Usuario;
+
 
 public class LoginFrame extends JFrame {
 
@@ -26,9 +19,8 @@ public class LoginFrame extends JFrame {
 	private JTextField tfUsuario;
 	private JPasswordField pfContrasena;
 	
-	ArchivoUsr archvUsr = new ArchivoUsr();
-	
-        private final String host = "localhost";
+    private final String host = "localhost";
+    
 	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
 		inicializarComponentes();
@@ -37,6 +29,7 @@ public class LoginFrame extends JFrame {
 	//Inicializa Cada Componente del Frame
 	public void inicializarComponentes(){
 		getContentPane().setLayout(null);
+		setTitle("SmartHouse v1.0 (Login)");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("res/casa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 340);
@@ -70,11 +63,11 @@ public class LoginFrame extends JFrame {
 		JButton btnAcceder = new JButton("Acceder");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                            try {
-                                accederCasa();
-                            } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+				try {
+            		accederCasa();
+               	} catch (ClassNotFoundException ex) {
+               		Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+               	}
 			}
 		});
 		btnAcceder.setBounds(200, 179, 89, 23);
@@ -89,11 +82,11 @@ public class LoginFrame extends JFrame {
 		btnSalir.setBounds(51, 250, 89, 23);
 		getContentPane().add(btnSalir);
 		
-	}//Fin Mï¿½todo inicializarComponentes();
+	}//Fin Método inicializarComponentes();
 	
-	//Carga y verifica los datos del usuario, una vez verificados los datos se cargarï¿½ el panel de control
+	//Carga y verifica los datos del usuario, una vez verificados los datos se cargará el panel de control
 	public void accederCasa() throws ClassNotFoundException{//
-            String usuario = tfUsuario.getText();//si algo coloca el .trim()
+            String usuario = tfUsuario.getText();
             String pass = new String(pfContrasena.getPassword());
             String confirm;
             
@@ -101,17 +94,18 @@ public class LoginFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, "Debe ingresar los campos solicitados");
             }else {
                 try {
-                    // Establish connection with the server
-                    Socket socket = new Socket(host, 8000);
+                    // Establece la conexion con el servidor
+                    @SuppressWarnings("resource")
+					Socket socket = new Socket(host, 8000);
                     
-                    // Create an output stream to the server
+                    // Crea los flujos de entrada y salida al servidor
                     DataOutputStream alServidor = new DataOutputStream(socket.getOutputStream());
                     DataInputStream delServidor = new DataInputStream(socket.getInputStream());
                     
-                    //Recibe un objeto de tipo Usuario
+                    //Flujo de entrada que recibe un objeto de tipo Usuario
                     ObjectInputStream delServidorUsr = new ObjectInputStream(socket.getInputStream());
                     
-                    //send to the server
+                    //envia el usuario al servidor
                     alServidor.writeUTF(usuario);
                     
                     //Recibe un String del servidor confirmando el acceso
@@ -120,7 +114,7 @@ public class LoginFrame extends JFrame {
                     //Recibe el objeto usuario en variable tipo object 
                     Object user = delServidorUsr.readObject();
                     
-                    //Casteamos el objeto para mirar si podemos obtener los datos 
+                    //Casteamos el objeto para obtener los datos 
                     Usuario acceso = (Usuario)user;
                     
                     if ("concedido".equals(confirm)){
@@ -138,32 +132,6 @@ public class LoginFrame extends JFrame {
                 }catch (IOException ex) {
                     System.err.println(ex);
                 }
-                
-                /*HashMap<String, Usuario> registros = new HashMap<>();
-                try {
-                    registros = archvUsr.leerDatosUsr();
-                } catch (ClassNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null, "ï¿½Error!");
-                }
-            
-                Usuario logIn = registros.get(usuario);
-                
-                if (logIn != null){ 
-            	
-                    JOptionPane.showMessageDialog(null, "ï¿½Ha Iniciado Sesiï¿½n!");
-                    String nm = logIn.getNombre();
-                    boolean alc1 = logIn.isPrtAlcoba1();
-                    boolean alc2 = logIn.isPrtAlcoba2();
-                    boolean pers = logIn.isPersiana();
-           		
-                    LoginFrame.this.dispose();
-                    ControlFrame contfrm = new ControlFrame(nm, alc1, alc2, pers);
-                    contfrm.setVisible(true);
-                    contfrm.setLocationRelativeTo(null);
-            	
-                }else{
-                    JOptionPane.showMessageDialog(null, "ï¿½El Usuario no existe!");
-                }*/
             } 
 	}//Fin Metodo accederCasa
 }

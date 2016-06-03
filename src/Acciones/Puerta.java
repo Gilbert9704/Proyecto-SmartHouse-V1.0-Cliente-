@@ -59,7 +59,7 @@ public class Puerta implements MovimientosPuerta {
     	System.out.println("entre a enviarComando");
         /*
     	try{
-            Socket socket1 = new Socket(host, 8500);
+            Socket socket1 = new Socket(host, 8000);
             
             DataOutputStream datoAlServidor = new DataOutputStream(socket1.getOutputStream());
             System.out.println("Voy a enviar los datos");

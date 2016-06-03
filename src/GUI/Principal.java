@@ -5,7 +5,6 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		LoginFrame logFr = new LoginFrame();
-		logFr.setTitle("SmartHouse v1.0 (Login)");
 		logFr.setLocationRelativeTo(null);
 		logFr.setResizable(false);
 		logFr.setVisible(true);

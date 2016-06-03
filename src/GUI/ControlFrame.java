@@ -48,7 +48,7 @@ public class ControlFrame extends JFrame{
 	JLabel lblPuertaAlcoba_2 = new JLabel("- Puerta Alcoba 2 : ");
 	JLabel lblPuertaBao = new JLabel("- Puerta Ba\u00F1o : ");
 	
-	//Botones Iluminaciï¿½n
+	//Botones Iluminación
 	JButton btnLuzAlcoba_1 = new JButton();
 	JButton btnLuzAlcoba_2 = new JButton();
 	JButton btnLuzLavanderia = new JButton();
@@ -57,7 +57,7 @@ public class ControlFrame extends JFrame{
 	JButton btnLuzSala = new JButton();
 	JButton btnLuzEntrt = new JButton();
 	
-	//Label Estado Iluminaciï¿½n
+	//Label Estado Iluminación
 	JLabel lblIluminacionAlcoba_1 = new JLabel("- Iluminaci\u00F3n Alcoba 1 : ");
 	JLabel lblIluminacinAlcoba_2 = new JLabel("- Iluminaci\u00F3n Alcoba 2 : ");
 	JLabel lblIluminacinLavandea = new JLabel("- Iluminaci\u00F3n Lavande\u00EDa : ");
@@ -80,7 +80,6 @@ public class ControlFrame extends JFrame{
 			btnPAlcoba_2.setEnabled(false);
 			btnLuzAlcoba_2.setEnabled(false);
 		}
-
 		//<---------------------------------------------->
 		
 		this.getContentPane().setLayout(null);
@@ -163,7 +162,7 @@ public class ControlFrame extends JFrame{
 		btnLuzLavanderia.setBounds(218, 123, 116, 128);
 		getContentPane().add(btnLuzLavanderia);
 		
-		//Boton Luz Baï¿½o
+		//Boton Luz Baño
 		btnLuzBanio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (lzBano == false){
