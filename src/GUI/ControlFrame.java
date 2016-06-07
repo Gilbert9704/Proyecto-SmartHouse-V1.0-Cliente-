@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -84,6 +86,7 @@ public class ControlFrame extends JFrame{
 		
 		this.getContentPane().setLayout(null);
 		this.setTitle("SmartHouse v1.0 Panel de Control");
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("src/res/casa.png"));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 715, 660);
@@ -116,7 +119,7 @@ public class ControlFrame extends JFrame{
 				iluminacion.luzAlcoba1(lzAlcoba1);
 			}
 		});
-		btnLuzAlcoba_1.setIcon(new ImageIcon("res/alcoba_1.jpg"));
+		btnLuzAlcoba_1.setIcon(new ImageIcon("src/res/alcoba_1.jpg"));
 		btnLuzAlcoba_1.setBounds(99, 123, 122, 128);
 		getContentPane().add(btnLuzAlcoba_1);
 		
@@ -137,7 +140,7 @@ public class ControlFrame extends JFrame{
 				iluminacion.luzAlcoba2(lzAlcoba2);
 			}
 		});
-		btnLuzAlcoba_2.setIcon(new ImageIcon("res/alcoba_2.jpg"));
+		btnLuzAlcoba_2.setIcon(new ImageIcon("src/res/alcoba_2.jpg"));
 		btnLuzAlcoba_2.setBounds(218, 278, 116, 119);
 		getContentPane().add(btnLuzAlcoba_2);
 		
@@ -158,7 +161,7 @@ public class ControlFrame extends JFrame{
 				iluminacion.luzLavanderia(lzLavanderia);
 			}
 		});
-		btnLuzLavanderia.setIcon(new ImageIcon("res/lavanderia.jpg"));
+		btnLuzLavanderia.setIcon(new ImageIcon("src/res/lavanderia.jpg"));
 		btnLuzLavanderia.setBounds(218, 123, 116, 128);
 		getContentPane().add(btnLuzLavanderia);
 		
@@ -179,7 +182,7 @@ public class ControlFrame extends JFrame{
 				iluminacion.luzBano(lzBano);
 			}
 		});
-		btnLuzBanio.setIcon(new ImageIcon("res/ba\u00F1o.jpg"));
+		btnLuzBanio.setIcon(new ImageIcon("src/res/ba\u00F1o.jpg"));
 		btnLuzBanio.setBounds(330, 123, 116, 128);
 		getContentPane().add(btnLuzBanio);
 		
@@ -200,7 +203,7 @@ public class ControlFrame extends JFrame{
 				iluminacion.luzCocina(lzCocina);
 			}
 		});
-		btnLuzCocina.setIcon(new ImageIcon("res/cocina.jpg"));
+		btnLuzCocina.setIcon(new ImageIcon("src/res/cocina.jpg"));
 		btnLuzCocina.setBounds(440, 123, 116, 128);
 		getContentPane().add(btnLuzCocina);
 		
@@ -221,7 +224,7 @@ public class ControlFrame extends JFrame{
 				iluminacion.luzSalaComedor(lzSalaComedor);
 			}
 		});
-		btnLuzSala.setIcon(new ImageIcon("res/salaComedor.jpg"));
+		btnLuzSala.setIcon(new ImageIcon("src/res/salaComedor.jpg"));
 		btnLuzSala.setBounds(440, 250, 116, 119);
 		getContentPane().add(btnLuzSala);
 		
@@ -241,7 +244,7 @@ public class ControlFrame extends JFrame{
 				}
 			}
 		});
-		btnLuzEntrt.setIcon(new ImageIcon("res/entretenimiento.jpg"));
+		btnLuzEntrt.setIcon(new ImageIcon("src/res/entretenimiento.jpg"));
 		btnLuzEntrt.setBounds(332, 278, 109, 119);
 		getContentPane().add(btnLuzEntrt);
 		//<--------------Fin Botones Iluminacion--------------->
@@ -341,7 +344,7 @@ public class ControlFrame extends JFrame{
 				}			
 			}
 		});
-		btnPPrincipal.setIcon(new ImageIcon("res/puerta.jpg"));
+		btnPPrincipal.setIcon(new ImageIcon("src/res/puerta.jpg"));
 		btnPPrincipal.setBounds(553, 250, 57, 83);
 		getContentPane().add(btnPPrincipal);
 		//<---------------Fin Botones Puertas---------------->

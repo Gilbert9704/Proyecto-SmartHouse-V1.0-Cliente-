@@ -30,7 +30,7 @@ public class LoginFrame extends JFrame {
 	public void inicializarComponentes(){
 		getContentPane().setLayout(null);
 		setTitle("SmartHouse v1.0 (Login)");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("res/casa.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src/res/casa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 340);
 		
@@ -117,15 +117,21 @@ public class LoginFrame extends JFrame {
                     //Casteamos el objeto para obtener los datos 
                     Usuario acceso = (Usuario)user;
                     
+                    String contrasena = acceso.getContrasena();
+                    
                     if ("concedido".equals(confirm)){
-                        LoginFrame.this.dispose();
-                        String name = acceso.getNombre();
-                        boolean alcb1 = acceso.isPrtAlcoba1();
-                        boolean alcb2 = acceso.isPrtAlcoba2();
+                        if (contrasena.equals(pass)){	
+                    		LoginFrame.this.dispose();
+                        	String name = acceso.getNombre();
+                        	boolean alcb1 = acceso.isPrtAlcoba1();
+                        	boolean alcb2 = acceso.isPrtAlcoba2();
                                                
-                        ControlFrame ctrlFrm = new ControlFrame(name, alcb1, alcb2);
-                        ctrlFrm.setVisible(true);
-                        ctrlFrm.setLocationRelativeTo(null);
+                        	ControlFrame ctrlFrm = new ControlFrame(name, alcb1, alcb2);
+                        	ctrlFrm.setVisible(true);
+                        	ctrlFrm.setLocationRelativeTo(null);
+                        }else{
+                        	JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Aviso", JOptionPane.ERROR_MESSAGE);
+                        }
                     }else if ("denegado".equals(confirm)){
                         JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado");
                     }

@@ -1,7 +1,7 @@
 package GUI;
 
 public class Principal {
-
+	//Atencion este protecto se encuentra en la carpeta reservas de documentos
 	public static void main(String[] args) {
 		
 		LoginFrame logFr = new LoginFrame();
